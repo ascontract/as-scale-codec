@@ -24,15 +24,15 @@ export const enum BIT_LENGTH {
 
 export class Bytes {
 
-    static putUint<T extends number> (b: u8[], v: T, bitLength: number): void {
+    static putUint<T> (b: u8[], v: T, bitLength: i32): void {
         b[0] = u8(v);
 
-        for (let i: u8 = 1; i < bitLength; i++) {
+        for (let i: u8 = 1; i < u8(bitLength); i++) {
             b[i] = u8(v >> i * 8);
         }
     }
 
-    static toUint<T extends number> (b: u8[], bitLength: i32, index: i32 = 0): T {
+    static toUint<T> (b: u8[], bitLength: i32, index: i32 = 0): T {
         const buf = new Array<u8>(bitLength);
         Bytes.copy<u8>(b, buf, 0, index);
 
@@ -44,9 +44,9 @@ export class Bytes {
         return result;
     }
 
-    static appendUint<T extends number> (b: Array<u8>, v: T, bitLength: number): void {
+    static appendUint<T> (b: Array<u8>, v: T, bitLength: i32): void {
         b.push(u8(v));
-        for (let i: u8 = 1; i < bitLength; i++) {
+        for (let i: u8 = 1; i < u8(bitLength); i++) {
             b.push(u8(v >> i * 8));
         }
     }

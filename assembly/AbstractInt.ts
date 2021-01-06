@@ -16,7 +16,7 @@ import { UnwrappableCodec } from "./interfaces/UnwrappableCodec";
 import { Bytes } from "./utils/Bytes";
 
 /** Representation for a Int value in the system. */
-export abstract class AbstractInt<T extends number> implements UnwrappableCodec<T> {
+export abstract class AbstractInt<T> implements UnwrappableCodec<T> {
 
     protected bitLength: i32;
     private _value: T;
